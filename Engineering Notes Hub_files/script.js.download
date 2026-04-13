@@ -1,0 +1,169 @@
+// Data (converted from mockNotes.ts)
+let mockNotes = [];
+
+fetch("/api/notes")
+  .then(res => res.json())
+  .then(data => {
+    mockNotes = data.map(n => ({
+      id: n.id,
+      title: n.title,
+      description: n.description,
+      subject: n.subject,
+      semester: n.semester,
+      fileSize: n.file_size,
+      downloadUrl: `${n.file_path}`
+    }));
+    renderNotes();
+  })
+  .catch(err => console.error(err));
+
+const subjects = ["All", "FOC", "SON", "DT", "Linux", "AM", "CDE", "EP", "EDS"];
+const semesters = ["All", "SEM1", "SEM2"];
+
+// App state
+let activeSubject = "All";
+let activeSemester = "All";
+let searchQuery = "";
+
+// DOM refs
+const subjectsWrap = document.getElementById("subjects");
+const semestersWrap = document.getElementById("semesters");
+const notesGrid = document.getElementById("notesGrid");
+const countEl = document.getElementById("count");
+const emptyState = document.getElementById("emptyState");
+const searchInput = document.getElementById("search");
+const clearSearchBtn = document.getElementById("clearSearch");
+
+// Utilities
+function el(tag, attrs = {}, children = []) {
+  const node = document.createElement(tag);
+  for (const k in attrs) {
+    if (k === "class") node.className = attrs[k];
+    else if (k === "text") node.textContent = attrs[k];
+    else if (k === "html") node.innerHTML = attrs[k];
+    else node.setAttribute(k, attrs[k]);
+  }
+  children.forEach(c => node.appendChild(c));
+  return node;
+}
+
+// Render filter buttons
+function renderButtons(container, list, activeValue, onClick) {
+  container.innerHTML = "";
+  list.forEach((cat) => {
+    const btn = el("button", { class: "btn " + (cat === activeValue ? "default active" : "outline"), "data-value": cat, type: "button" });
+    btn.textContent = cat;
+    btn.addEventListener("click", () => onClick(cat));
+    container.appendChild(btn);
+  });
+}
+
+// Render a single card
+function renderCard(note) {
+  const card = el("article", { class: "card", role: "article", "aria-labelledby": `title-${note.id}` });
+
+  const header = el("div", { class: "card-header" });
+  const info = el("div", { class: "card-info-block" });
+
+  const title = el("h3", { class: "card-title", id: `title-${note.id}`, text: note.title });
+  const badges = el("div", { class: "meta-row" });
+  badges.appendChild(el("span", { class: "badge", text: note.semester }));
+  badges.appendChild(el("span", { class: "badge", text: note.subject }));
+
+  info.appendChild(title);
+  info.appendChild(badges);
+
+  const iconWrap = el("div", { class: "card-icon" });
+  iconWrap.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21h14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  header.appendChild(info);
+  header.appendChild(iconWrap);
+
+  const desc = el("p", { class: "card-desc", text: note.description });
+
+  const footer = el("div", { class: "card-footer" });
+  const infoRow = el("div", { class: "card-info", text: `PDF • ${note.fileSize}` });
+
+  const actions = el("div", { class: "actions" });
+  const downloadBtn = el("button", { class: "btn default", type: "button" });
+  downloadBtn.innerHTML = `⬇ Download`;
+  downloadBtn.addEventListener("click", () => {
+    // open actual URL in new tab
+    if (note.downloadUrl && note.downloadUrl !== "#") window.open(note.downloadUrl, "_blank");
+    else alert("Download link not provided.");
+  });
+
+  const viewBtn = el("button", { class: "btn outline", type: "button" });
+  viewBtn.innerHTML = `👁 View`;
+  viewBtn.addEventListener("click", () => {
+    if (note.downloadUrl && note.downloadUrl !== "#") window.open(note.downloadUrl, "_blank");
+    else alert("View link not provided.");
+  });
+
+  actions.appendChild(downloadBtn);
+  actions.appendChild(viewBtn);
+
+  footer.appendChild(infoRow);
+  footer.appendChild(actions);
+
+  card.appendChild(header);
+  card.appendChild(desc);
+  card.appendChild(footer);
+
+  return card;
+}
+
+// Filter logic
+function getFilteredNotes() {
+  const q = searchQuery.trim().toLowerCase();
+  return mockNotes.filter(note => {
+    const matchesSearch = !q || (
+      note.title.toLowerCase().includes(q) ||
+      note.description.toLowerCase().includes(q) ||
+      note.subject.toLowerCase().includes(q)
+    );
+    const matchesSubject = activeSubject === "All" || note.subject === activeSubject;
+    const matchesSemester = activeSemester === "All" || note.semester === activeSemester;
+    return matchesSearch && matchesSubject && matchesSemester;
+  });
+}
+
+// Render notes grid
+function renderNotes() {
+  const filtered = getFilteredNotes();
+  notesGrid.innerHTML = "";
+  countEl.textContent = filtered.length;
+  if (filtered.length === 0) {
+    emptyState.hidden = false;
+  } else {
+    emptyState.hidden = true;
+    filtered.forEach(note => notesGrid.appendChild(renderCard(note)));
+  }
+}
+
+// Handlers
+function onSubjectChange(cat) {
+  activeSubject = cat;
+  renderButtons(subjectsWrap, subjects, activeSubject, onSubjectChange);
+  renderNotes();
+}
+
+function onSemesterChange(cat) {
+  activeSemester = cat;
+  renderButtons(semestersWrap, semesters, activeSemester, onSemesterChange);
+  renderNotes();
+}
+
+function onSearchChange(value) {
+  searchQuery = value;
+  renderNotes();
+}
+
+// Wire up events
+searchInput.addEventListener("input", (e) => onSearchChange(e.target.value));
+clearSearchBtn.addEventListener("click", () => { searchInput.value = ""; onSearchChange(""); });
+
+// Init
+renderButtons(subjectsWrap, subjects, activeSubject, onSubjectChange);
+renderButtons(semestersWrap, semesters, activeSemester, onSemesterChange);
+renderNotes();

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cast - Stranger Things</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #111; 
+            color: #ccc; 
+            padding: 40px; 
+            text-align: center; 
+        }
+        h1 { 
+            color: #e50914; 
+            font-size: 2.5em; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 40px;
+        }
+        
+        /* This creates a beautiful, responsive grid for the actors */
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Styling for each individual actor card */
+        .cast-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+        .cast-card:hover {
+            transform: scale(1.05); /* Makes the card pop out when you hover over it */
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+        }
+
+        .cast-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #e50914;
+            margin-bottom: 15px;
+        }
+
+        .cast-card h3 {
+            color: #fff;
+            margin: 10px 0 5px 0;
+            font-size: 1.2em;
+        }
+
+        .cast-card p {
+            color: #aaa;
+            margin: 0;
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            margin-top: 50px; 
+            text-decoration: none; 
+            color: white; 
+            background-color: #e50914; 
+            padding: 12px 25px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            font-size: 1.2em; 
+            transition: 0.3s; 
+        }
+        .back-btn:hover { 
+            background-color: #b20710; 
+            transform: scale(1.05); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The Cast of Hawkins</h1>
+    
+    <div class="cast-grid">
+        
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Millie_Bobby_Brown_2017.jpg/300px-Millie_Bobby_Brown_2017.jpg" alt="Millie Bobby Brown">
+            <h3>Millie Bobby Brown</h3>
+            <p>Eleven (El)</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Finn_Wolfhard_by_Gage_Skidmore.jpg/300px-Finn_Wolfhard_by_Gage_Skidmore.jpg" alt="Finn Wolfhard">
+            <h3>Finn Wolfhard</h3>
+            <p>Mike Wheeler</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Noah_Schnapp_by_Gage_Skidmore.jpg/300px-Noah_Schnapp_by_Gage_Skidmore.jpg" alt="Noah Schnapp">
+            <h3>Noah Schnapp</h3>
+            <p>Will Byers</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gaten_Matarazzo_by_Gage_Skidmore.jpg/300px-Gaten_Matarazzo_by_Gage_Skidmore.jpg" alt="Gaten Matarazzo">
+            <h3>Gaten Matarazzo</h3>
+            <p>Dustin Henderson</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Caleb_McLaughlin_by_Gage_Skidmore.jpg/300px-Caleb_McLaughlin_by_Gage_Skidmore.jpg" alt="Caleb McLaughlin">
+            <h3>Caleb McLaughlin</h3>
+            <p>Lucas Sinclair</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Sadie_Sink_2018.jpg/300px-Sadie_Sink_2018.jpg" alt="Sadie Sink">
+            <h3>Sadie Sink</h3>
+            <p>Max Mayfield</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Joe_Keery_by_Gage_Skidmore.jpg/300px-Joe_Keery_by_Gage_Skidmore.jpg" alt="Joe Keery">
+            <h3>Joe Keery</h3>
+            <p>Steve Harrington</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Natalia_Dyer_by_Gage_Skidmore.jpg/300px-Natalia_Dyer_by_Gage_Skidmore.jpg" alt="Natalia Dyer">
+            <h3>Natalia Dyer</h3>
+            <p>Nancy Wheeler</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Charlie_Heaton_at_the_2017_San_Diego_Comic-Con_International.jpg/300px-Charlie_Heaton_at_the_2017_San_Diego_Comic-Con_International.jpg" alt="Charlie Heaton">
+            <h3>Charlie Heaton</h3>
+            <p>Jonathan Byers</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/David_Harbour_by_Gage_Skidmore_2.jpg/300px-David_Harbour_by_Gage_Skidmore_2.jpg" alt="David Harbour">
+            <h3>David Harbour</h3>
+            <p>Chief Jim Hopper</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Winona_Ryder_-_2010.jpg/300px-Winona_Ryder_-_2010.jpg" alt="Winona Ryder">
+            <h3>Winona Ryder</h3>
+            <p>Joyce Byers</p>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Joseph_Quinn_2022.jpg/300px-Joseph_Quinn_2022.jpg" alt="Joseph Quinn">
+            <h3>Joseph Quinn</h3>
+            <p>Eddie Munson</p>
+        </div>
+
+    </div>
+
+    <a href="homepage.html" class="back-btn">← Return to Hawkins (Home)</a>
+
+</body>
+</html>
