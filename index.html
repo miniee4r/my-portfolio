@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shruti Khajuria | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9ff;
+            --sidebar-color: #ffffff;
+            --accent-color: #6c5ce7;
+            --secondary-accent: #a29bfe;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --card-shadow: 0 10px 30px rgba(108, 92, 231, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; align-items: center; }
+
+        .header-container {
+            width: 100%; max-width: 1000px; background: var(--sidebar-color);
+            margin-top: 40px; padding: 40px; border-radius: 24px;
+            display: flex; align-items: center; gap: 40px; box-shadow: var(--card-shadow);
+        }
+
+        .profile-img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; border: 4px solid var(--secondary-accent); }
+        .header-details h1 { font-size: 2.2rem; color: var(--accent-color); letter-spacing: -1px; }
+        
+        .quick-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem; margin-top: 15px; }
+        .quick-info span { display: flex; align-items: center; gap: 8px; color: var(--text-muted); }
+        .quick-info i { color: var(--accent-color); width: 16px; }
+
+        .social-header { margin-top: 15px; display: flex; gap: 20px; }
+        .social-header a { font-size: 1.5rem; color: var(--accent-color); transition: 0.3s; }
+        .social-header a:hover { opacity: 0.7; transform: translateY(-3px); }
+
+        .main-content { width: 100%; max-width: 1000px; padding: 40px 0; }
+        .section-title { font-size: 1.4rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        .section-title::after { content: ""; height: 2px; flex: 1; background: var(--secondary-accent); opacity: 0.3; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .card { background: var(--sidebar-color); padding: 30px; border-radius: 20px; box-shadow: var(--card-shadow); transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border: 1px solid var(--secondary-accent); }
+
+        .btn-link { 
+            margin-top: auto; padding: 10px; background: var(--accent-color); color: white; 
+            text-align: center; border-radius: 10px; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+        }
+
+        .action-bar { display: flex; justify-content: center; padding: 40px; }
+        .btn-resume { background: var(--accent-color); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <img src="profile.jpg" alt="Shruti Khajuria" class="profile-img">
+        <div class="header-details">
+            <h1>SHRUTI KHAJURIA</h1>
+            <p>Software Engineering Student | MIT Academy of Engineering</p>
+            <div class="quick-info">
+                <span><i class="fas fa-envelope"></i> shrutikhajuria01@gmail.com</span>
+                <span><i class="fas fa-location-dot"></i> Alandi, Pune - 412105</span>
+                <span><i class="fas fa-cake-candles"></i> 10 August 2008</span>
+                <span><i class="fas fa-id-card"></i> PRN: 202501100011</span>
+            </div>
+            <div class="social-header">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>B.Tech (Software)</h3>
+                    <p>MIT Academy of Engineering, Alandi Pune</p>
+                </div>
+                <div class="card">
+                    <h3>12th Grade (86%)</h3>
+                    <p>Govt Girls Higher Secondary School</p>
+                </div>
+                <div class="card">
+                    <h3>10th Grade (91%)</h3>
+                    <p>New Public High School, Sunderbani</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="notes-project.jpg" alt="Notes Hub" style="width:100%; border-radius:10px; margin-bottom:15px;">
+                    <h3>Pause and Progress</h3>
+                    <p>Engineering Notes Hub</p>
+                    <a href="Engineering Notes Hub.html" class="btn-link" target="_blank">View Website</a>
+                </div>
+                <div class="card">
+                    <img src="stranger-things.jpg" alt="Strangero Things" style="width:100%; border-radius:10px; margin-bottom:15px;">
+                    <h3>Stranger Things Fan Page</h3>
+                    <p>Ultimate Fan Site</p>
+                    <a href="strangerThingsproject" class="btn-link" target="_blank">Launch Webpage</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="font-weight:bold; color:var(--accent-color);">Linux Foundation</p>
+                    [span_9](start_span)<h3>Intro to Linux (LFS101)[span_9](end_span)</h3>
+                    <a href="cert-linux.jpg" class="btn-link" target="_blank">View Certificate</a>
+                </div>
+                <div class="card">
+                    <p style="font-weight:bold; color:var(--accent-color);">IBM SkillsBuild</p>
+                    [span_10](start_span)<h3>Learn JavaScript[span_10](end_span)</h3>
+                    <a href="cert-javascript.jpg" class="btn-link" target="_blank">View Certificate</a>
+                </div>
+                <div class="card">
+                    <p style="font-weight:bold; color:var(--accent-color);">IBM SkillsBuild</p>
+                    [span_11](start_span)<h3>Career Management[span_11](end_span)</h3>
+                    <a href="cert-career.jpg" class="btn-link" target="_blank">View Certificate</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="action-bar">
+            <a href="Shruti_Resume.pdf" class="btn-resume" download>
+                <i class="fas fa-file-arrow-down"></i> Download Resume
+            </a>
+        </div>
+    </div>
+</body>
+</html>
